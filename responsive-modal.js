@@ -12,6 +12,8 @@ function Modal() {
   if (!(this instanceof Modal)) return new Modal()
   EventEmitter.call(this)
 
+  this.destroyed = false
+
   this.wrapper = createElement('div')
   this.wrapper.className = 'rm-wrapper'
 
@@ -27,6 +29,7 @@ function Modal() {
 inherits(Modal, EventEmitter)
 
 Modal.prototype.handleEvent = function (event) {
+  if (this.destroyed) return
   var element = event.target
   while (element) {
     if (element === this.content) return
@@ -38,6 +41,8 @@ Modal.prototype.handleEvent = function (event) {
 }
 
 Modal.prototype.destroy = function () {
+  if (this.destroyed) return
+  this.destroyed = true
   document.body.removeChild(this.wrapper)
   delete this.wrapper
   delete this.content
