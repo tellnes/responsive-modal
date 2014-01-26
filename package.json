@@ -1,0 +1,31 @@
+{
+  "name": "responsive-modal",
+  "version": "0.0.0",
+  "description": "responsive-modal",
+  "main": "responsive-modal.js",
+  "dependencies": {
+    "inherits": "~2.0.1"
+  },
+  "devDependencies": {
+    "browserify": "~3.24.1",
+    "stylus": "~0.42.1"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tellnes/responsive-modal.git"
+  },
+  "keywords": [
+    "responsive",
+    "modal"
+  ],
+  "author": "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com)",
+  "license": "MIT",
+  "directories": {
+    "example": "example"
+  },
+  "bugs": {
+    "url": "https://github.com/tellnes/responsive-modal/issues"
+  },
+  "homepage": "https://github.com/tellnes/responsive-modal"
+}

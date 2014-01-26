@@ -1,0 +1,23 @@
+
+responsive-modal(options)
+  width: options.width
+  height: options.height
+  margin-left: -(options.width / 2)
+  margin-top: -(options.height / 2)
+
+
+.rm-wrapper
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 1000
+  background-color: rgba(0, 0, 0, 0.5)
+
+.rm-content
+  background-color: #FFF
+  position: absolute
+  left: 50%
+  top: 50%
+  overflow: auto
