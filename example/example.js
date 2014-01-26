@@ -1,3 +1,4 @@
+
 var Modal = require('..')
 
 window.onload = function () {

@@ -1,9 +1,22 @@
 
 @import '../responsive-modal'
 
-.example-modal .rm-content
+.example-modal
+  /*
   options = {
-      width: 600px
-    , height: 200px
+      width: 800px
+    , height: 600px
+    , phone-margin: 10px     OR    phone-margin-x: 10px
+                                    phone-margin-y: 10px
+
+    , tablet-margin: 10px    OR    tablet-margin-x: 10px
+                                    tablet-margin-y: 10px
     }
+  */
+  options = {
+    width: 800px
+  , height: 600px
+  , phone-margin: 10px
+  , tablet-margin: 50px
+  }
   responsive-modal(options)
