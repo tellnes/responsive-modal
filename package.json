@@ -1,6 +1,6 @@
 {
   "name": "responsive-modal",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "responsive-modal",
   "main": "responsive-modal.js",
   "dependencies": {
