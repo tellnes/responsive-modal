@@ -22,6 +22,8 @@ function Modal() {
   this.wrapper.appendChild(this.content)
 
   this.wrapper.addEventListener('click', this, false)
+  window.addEventListener('resize', this, false)
+  window.addEventListener('orientationchange', this, false)
 
   document.body.appendChild(this.wrapper)
 }
@@ -30,6 +32,19 @@ inherits(Modal, EventEmitter)
 
 Modal.prototype.handleEvent = function (event) {
   if (this.destroyed) return
+
+  switch (event.type) {
+  case 'click':
+    this.handleClick(event)
+    break
+  case 'resize':
+  case 'orientationchange':
+    this.emit('resize')
+    break
+  }
+}
+
+Modal.prototype.handleClick = function (event) {
   var element = event.target
   while (element) {
     if (element === this.content) return
@@ -43,7 +58,13 @@ Modal.prototype.handleEvent = function (event) {
 Modal.prototype.destroy = function () {
   if (this.destroyed) return
   this.destroyed = true
+
+  this.wrapper.removeEventListener('click', this, false)
+  window.removeEventListener('resize', this, false)
+  window.removeEventListener('orientationchange', this, false)
+
   document.body.removeChild(this.wrapper)
+
   delete this.wrapper
   delete this.content
 }
