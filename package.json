@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/tellnes/responsive-modal/issues"
   },
-  "homepage": "https://github.com/tellnes/responsive-modal"
+  "homepage": "https://github.com/tellnes/responsive-modal",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
 }
