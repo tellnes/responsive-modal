@@ -1,6 +1,6 @@
 {
   "name": "responsive-modal",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "responsive-modal",
   "main": "stylus.js",
   "browser": "responsive-modal.js",
