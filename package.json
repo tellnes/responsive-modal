@@ -1,6 +1,6 @@
 {
   "name": "responsive-modal",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "responsive-modal",
   "main": "stylus.js",
   "browser": "responsive-modal.js",
@@ -18,7 +18,9 @@
   },
   "keywords": [
     "responsive",
-    "modal"
+    "modal",
+    "stylus",
+    "css"
   ],
   "author": "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com)",
   "license": "MIT",
