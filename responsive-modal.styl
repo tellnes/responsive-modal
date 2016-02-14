@@ -1,61 +1,4 @@
 
-// SETTINGS
-rm-phone-margin = 10px
-rm-phone-from = 0px
-rm-phone-to = 768px
-rm-phone = "only screen and ( min-width: " + rm-phone-from + " ) and ( max-width: " + rm-phone-to + " )"
-
-rm-tablet-margin = 20px
-rm-tablet-from = rm-phone-to
-rm-tablet-to = 1024px
-rm-tablet = "only screen and ( min-width: " + rm-tablet-from + " ) and ( max-width: " + rm-tablet-to + " )"
-
-rm-desktop-width = 800px
-rm-desktop-height = 600px
-
-// METHODS
-responsive-modal(options = {})
-  responsive-modal-desktop(options)
-  responsive-modal-phone(options)
-  responsive-modal-tablet(options)
-
-// DESKTOP
-responsive-modal-desktop(options)
-  options.width  = ( options.width  || rm-desktop-width  )
-  options.height = ( options.height || rm-desktop-height )
-  .rm-content
-    width: options.width
-    height: options.height
-    margin-left: -(options.width / 2)
-    margin-top: -(options.height / 2)
-
-responsive-modal-device(options)
-  .rm-content
-    height: auto
-    width: auto
-    margin-left: 0
-    margin-top: 0
-    top: options.margin-y
-    right: options.margin-x
-    bottom: options.margin-y
-    left: options.margin-x
-
-// MEDIA PHONE
-responsive-modal-phone(options)
-  @media rm-phone
-    options.margin-x = ( options.phone-margin-x || options.phone-margin || rm-phone-margin )
-    options.margin-y = ( options.phone-margin-y || options.phone-margin || rm-phone-margin )
-    responsive-modal-device(options)
-
-// MEDIA TABLET
-responsive-modal-tablet(options)
-  @media rm-tablet
-    options.margin-x = ( options.tablet-margin-x || options.tablet-margin || rm-tablet-margin )
-    options.margin-y = ( options.tablet-margin-y || options.tablet-margin || rm-tablet-margin )
-    responsive-modal-device(options)
-
-
-// DEFAULT STYLING
 .rm-wrapper
   position: fixed
   top: 0
@@ -65,12 +8,42 @@ responsive-modal-tablet(options)
   z-index: 1000
   background-color: rgba(0, 0, 0, 0.5)
 
-.rm-content
-  -webkit-box-sizing: border-box
-  -moz-box-sizing: border-box
-  box-sizing: border-box
-  background-color: #FFF
-  position: absolute
-  left: 50%
-  top: 50%
-  overflow: auto
+responsive-modal($options = {})
+  $width = $options.width || 800px
+  $height = $options.height || 600px
+  $margin = 10px
+  $query = $options.query || 'both'
+
+  $query-width-big = '(min-width: ' + ($width + $margin*2) + ')'
+  $query-width-small = '(max-width: ' + ($width + $margin*2 - 1) + ')'
+  $query-height-big = '(min-height: ' + ($height + $margin*2) + ')'
+  $query-height-small = '(max-height: ' + ($height + $margin*2 - 1) + ')'
+
+  if $query == 'width'
+    $query-height-big += ' and ' + $query-width-big
+    $query-height-small += ', ' + $query-width-small
+  if $query == 'height'
+    $query-width-big += ' and ' + $query-height-big
+    $query-width-small += ', ' + $query-height-small
+
+  .rm-content
+    position: absolute
+    box-sizing: border-box
+    background-color: #fff
+    overflow: auto
+
+    @media $query-width-big
+      left: 50%
+      margin-left: -($width / 2)
+      width: $width
+    @media $query-width-small
+      left: $margin
+      right: $margin
+
+    @media $query-height-big
+      top: 50%
+      margin-top: -($height / 2)
+      height: $height
+    @media $query-height-small
+      top: $margin
+      bottom: $margin
